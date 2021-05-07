@@ -4,8 +4,15 @@
 
 html, body{
   width: 100%;
+  //解决页面不可以拖动的问题
+  /*height: 100%;
+  overflow: hidden;*/
+
+  //使用IScroll插件
   height: 100%;
   overflow: hidden;
+
+
   // 解决IScroll拖拽卡顿问题
   touch-action: none;
 }

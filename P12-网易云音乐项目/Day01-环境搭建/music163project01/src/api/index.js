@@ -1,0 +1,8 @@
+// 这个JS文件就是专门用于管理请求各种接口地址的
+import Network from './network'
+
+// 封装各种接口请求
+export const getBanner = () => Network.get('banner?type=2'); /*可以在网易云api当中进行查看类型*/
+export const getPersonalized = () => Network.get('personalized?limit=6');/*一次只显示6条数据*/
+export const getNewAlbum = () => Network.get('album/newest');
+export const getNewSong = () => Network.get('personalized/newsong');

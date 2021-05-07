@@ -4,6 +4,12 @@ import router from './router'
 import store from './store'
 import fastclick from 'fastclick'
 import './assets/css/base.scss'
+import VueLazyload from 'vue-lazyload'
+/*注册*/
+Vue.use(VueLazyload, {
+  /*配置*/
+  loading: require('./assets/images/loading.png') //设置占位图片
+});
 
 fastclick.attach(document.body)
 
