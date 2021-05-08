@@ -12,6 +12,11 @@ const Recommend = (resolve) => {
     resolve(module)
   })
 };
+const Detail = (resolve) => {
+  import("../views/Detail").then((module) => {
+    resolve(module)
+  })
+};
 const Singer = (resolve) => {
   import("../views/Singer").then((module) => {
     resolve(module)
@@ -39,7 +44,14 @@ const routes = [
   },
   {
     path: '/recommend',
-    component: Recommend
+    component: Recommend,
+    /*设置二级路由*/
+    children: [
+      {
+        path: 'detail/:id',
+        component: Detail
+      }
+    ]
   },
   {
     path: '/singer',

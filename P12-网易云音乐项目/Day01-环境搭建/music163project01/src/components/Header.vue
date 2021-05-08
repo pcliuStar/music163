@@ -36,8 +36,9 @@
         display: flex;
         justify-content: space-between;
 
-        position: relative;
-        z-index: 999;
+        /*position: relative;
+        z-index: 999;*/
+
         /*background-color: #ff0000;*/
         @include bg_color();
         .header-left,.header-right{
