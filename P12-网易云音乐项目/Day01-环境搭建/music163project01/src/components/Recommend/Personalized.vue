@@ -26,21 +26,26 @@
                 type: String,
                 default: '',
                 required: true
+            },
+            type: {
+                type: String,
+                default: '',
+                required: true
             }
         },
         methods: {
             selectItem(id){
                 console.log(id);
                 //调用Recomend父组件的方法
-                this.$emit('select', id);
+                this.$emit('select', id, this.type);
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    @import "src/assets/css/mixin";
-    @import "src/assets/css/variable";
+    @import "../../assets/css/mixin";
+    @import "../../assets/css/variable";
     .personalized{
         /*设置换肤颜色*/
         @include bg_sub_color();

@@ -48,7 +48,7 @@ const routes = [
     /*设置二级路由*/
     children: [
       {
-        path: 'detail/:id',
+        path: 'detail/:id/:type',
         component: Detail
       }
     ]

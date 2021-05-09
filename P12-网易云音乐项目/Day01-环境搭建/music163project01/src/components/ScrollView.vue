@@ -12,13 +12,16 @@
         mounted() {
             this.iscroll = new IScroll(this.$refs.wrapper, {
                 mouseWheel: true,
-                scrollbars: true,
+                /*scrollbars: true,*/
+                scrollbars: false,   //不需要显示滚动条
                 //解决IScroll拖拽卡顿问题
                 scrollX: false,
                 scrollY: true,
                 disablePointer: true,
                 disableTouch: false,
-                disableMouse: true
+                disableMouse: true,
+                /*设置滚动监听类型为像素级别*/
+                probeType: 3,
             });
             /*setTimeout(() => {
                 console.log(this.iscroll.maxScrollY);
@@ -47,6 +50,22 @@
                第二个参数: 告诉观察者对象我们需要观察什么内容*/
             observer.observe(this.$refs.wrapper, config)
         },
+        methods: {
+            // 提供一个监听滚动距离的方法给外界使用
+            scrolling (fn) {
+                this.iscroll.on('scroll', function () {
+                    fn(this.y)
+                })
+            },
+            // refresh () {
+            //     setTimeout(() => {
+            //         this.iscroll.refresh()
+            //     }, 100)
+            // },
+            // scrollTo (x, y, time) {
+            //     this.iscroll.scrollTo(x, y, time)
+            // }
+        }
     }
 </script>
 

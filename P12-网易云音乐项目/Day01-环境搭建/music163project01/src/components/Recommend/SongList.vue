@@ -30,10 +30,11 @@
 </script>
 
 <style scoped lang="scss">
-    @import "src/assets/css/mixin";
-    @import "src/assets/css/variable";
+    @import "../../assets/css/mixin";
+    @import "../../assets/css/variable";
     .song{
         width: 100%;
+        @include bg_sub_color();
         /*其余内容和之前设置一样*/
         .song-top{
             width: 100%;

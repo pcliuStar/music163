@@ -68,7 +68,7 @@
 </style>
 <!--不可以直接设置在上面的style内部，因为范围为scoped（不是全局的）-->
 <style lang="scss">
-    @import "src/assets/css/mixin";
+    @import "../../assets/css/mixin";
     .banner{
         /*设置底部轮播的小圆点默认样式*/
         .swiper-pagination-bullet{

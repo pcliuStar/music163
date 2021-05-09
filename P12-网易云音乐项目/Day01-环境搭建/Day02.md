@@ -148,7 +148,7 @@ npm install vue-awesome-swiper@3.1.3 --save
     }
 </script>
 ~~~~
-#####第三步：在Recommend组件当中注册并且使用Banner
+#####第三步：在Recommend热门推荐的组件当中注册并且使用Banner
 ~~~~
 <template>
     <div class="recommend">
@@ -200,7 +200,7 @@ axios.post(path, data).then(function (response){
     reject(error);
 })
 ~~~~
-#####第五步：在Recommend组件当中父组件使用子组件数据
+#####第五步：在Recommend热门推荐的组件当中父组件使用子组件数据
 ~~~~
 <template>
     <div class="recommend">
@@ -210,10 +210,6 @@ axios.post(path, data).then(function (response){
 </template>
 
 <script>
-    import {getBanner} from '../api/index'
-    /*第一步：导入Banner组件*/
-    import Banner from "../components/Banner";
-
     export default {
         name: "Recommend",
         created() {
@@ -225,21 +221,11 @@ axios.post(path, data).then(function (response){
             }).catch(function (err) {
                 console.log(err);
             })
-        },
-        components: {
-            /*第二步：注册Banner组件*/
-            Banner
-        },
-        data(){
-            return{
-                /*第三步：保存获取的数据*/
-                banners: []
-            }
         }
     }
 </script>
 ~~~~
-#####第六步：在Banner组件遍历显示所有的轮播图
+#####第六步：在Banner组件遍历显示所有的轮播图（此时的props非常重要）
 ~~~~
 <template>
     <!--注意点：swiper存在的bug是如果数据从网络获取的,那么自动轮播到最后一页之后就不轮播了-->
@@ -249,12 +235,14 @@ axios.post(path, data).then(function (response){
         <!-- slides: 变量显示所有获取的图片（然后设置图片的样式） -->
         <swiper-slide v-for="value in banners" :key="value.bannerId" class="item">
             <a :href="value.url">
+                #执行上面的遍历以后设置图片的样式
                 <img :src="value.pic" alt="">
             </a>
         </swiper-slide>
     </swiper>
 </template>
 
+#将数据存储以后要在上面直接使用
 <script>
     export default {
         /*父组件使用子组件数据*/
@@ -326,11 +314,13 @@ data(){
     }
 }
 ~~~~
-######第二步：创建Personalized组件
+######第三步：创建Personalized组件
 ~~~~
 <template>
     <div class="personalized">
         <div class="personalized-top">
+            <h3>推荐歌单</h3>
+
             <h3>{{title}}</h3>
         </div>
         <div class="personalized-list">
@@ -342,6 +332,8 @@ data(){
         </div>
     </div>
 </template>
+
+<Personalized :personalized="personalized"></Personalized>
 
 <script>
     export default {
@@ -372,14 +364,18 @@ data(){
             width: 100%;
             height: 84px;
             line-height: 84px;
+
+            #设置次要背景颜色（1）
             @include bg_sub_color();
             padding: 0 20px;
             .h3{
+                ##设置文字的大小与颜色
                 @include font_size($font_large);
                 font-weight: bolder;
                 @include font_color();
             }
-            /*添加文字底部横线*/
+
+            /*添加文字底部横线（2）*/
             border-bottom: 2px solid #cccccc;
         }
         .personalized-list{

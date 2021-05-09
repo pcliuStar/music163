@@ -6,3 +6,5 @@ export const getBanner = () => Network.get('banner?type=2'); /*可以在网易�
 export const getPersonalized = () => Network.get('personalized?limit=6');/*一次只显示6条数据*/
 export const getNewAlbum = () => Network.get('album/newest');
 export const getNewSong = () => Network.get('personalized/newsong');
+export const getPlayList = (data) => Network.get('playlist/detail', data);
+export const getAlbum = (data) => Network.get('album', data);/*获取专辑内容*/
